@@ -3,23 +3,22 @@ import { test } from "./fixtures/home-fixture";
 
 test.describe("Home", () => {
 	test(
-		"has title",
+		"Home page has correct title",
 		{
 			tag: TAGS.SMOKE,
 		},
 		async ({ homePage }) => {
-			await homePage.expectToHaveTitle(/Playwright/);
+			await homePage.expectToHaveTitle(/Sign in to iqgeo/);
 		},
 	);
 
 	test(
-		"get started link navigates to Installation section",
+		"Verify correct heading",
 		{
 			tag: TAGS.SMOKE,
 		},
 		async ({ homePage }) => {
-			await homePage.clickGetStarted();
-			await homePage.expectInstallationHeadingVisible();
+			await homePage.expectSigninHeadingVisible();
 		},
 	);
 });

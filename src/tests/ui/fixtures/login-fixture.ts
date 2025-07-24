@@ -1,14 +1,14 @@
 import { test as base } from "@playwright/test";
-import { HomePage } from "pages/ui";
+import { LoginPage } from "pages/ui";
 
 type HomePageFixture = {
-	homePage: HomePage;
+	loginPage: LoginPage;
 };
 
 export const test = base.extend<HomePageFixture>({
-	homePage: async ({ page }, use) => {
+	loginPage: async ({ page }, use) => {
 		const url = process.env.IQGEO_URL;
-		const homePage = new HomePage(page);
+		const homePage = new LoginPage(page);
 		await homePage.navigate(url || "/");
 		await use(homePage);
 	},

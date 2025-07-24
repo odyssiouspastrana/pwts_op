@@ -2,20 +2,15 @@ import { Page } from "@playwright/test";
 import { BasePage } from "./base-page";
 
 export class HomePage extends BasePage {
-	private readonly getStartedLink;
-	private readonly installationHeading;
+	private readonly signinHeading;
 
 	constructor(page: Page) {
 		super(page);
-		this.getStartedLink = this.page.getByRole("link", { name: "Get started" });
-		this.installationHeading = this.page.getByRole("heading", { name: "Installation" });
+
+		this.signinHeading = this.page.getByRole("heading", { name: "Sign in to your account" });
 	}
 
-	async clickGetStarted() {
-		await this.getStartedLink.click();
-	}
-
-	async expectInstallationHeadingVisible() {
-		await this.expectElementVisible(this.installationHeading);
+	async expectSigninHeadingVisible() {
+		await this.expectElementVisible(this.signinHeading);
 	}
 }
