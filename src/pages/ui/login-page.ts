@@ -12,10 +12,7 @@ export class LoginPage extends BasePage {
 	constructor(page: Page) {
 		super(page);
 
-		this.signInHeading = page.getByRole("heading", {
-			name: "Sign in to your account",
-		});
-
+		this.signInHeading = page.getByRole("heading", { name: "Sign in to your account" });
 		this.usernameInput = page.getByText("username");
 		this.passwordInput = page.getByText("password");
 		this.signInButton = page.getByRole("button", { name: "Sign in" });

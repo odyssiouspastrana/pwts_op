@@ -18,7 +18,7 @@ test.describe("Home", () => {
 			tag: TAGS.SMOKE,
 		},
 		async ({ homePage }) => {
-			await homePage.expectSigninHeadingVisible();
+			await homePage.expectSignInHeadingVisible();
 		},
 	);
 });

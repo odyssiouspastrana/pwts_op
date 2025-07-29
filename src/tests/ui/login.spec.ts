@@ -1,5 +1,6 @@
 import { TAGS } from "@utils/constants";
 import { test } from "./fixtures/login-fixture";
+import { getCredentials } from "@utils/helper";
 
 test.describe("Login", () => {
 	test(
@@ -9,11 +10,8 @@ test.describe("Login", () => {
 		},
 		async ({ loginPage }) => {
 			await loginPage.expectSignInHeadingToBeVisible();
-
-			const username = "admin";
-			const password = "_mywWorld_";
+			const { username, password } = getCredentials("valid");
 			await loginPage.login(username, password);
-
 			await loginPage.expectHomeLogo();
 		},
 	);
@@ -25,11 +23,8 @@ test.describe("Login", () => {
 		},
 		async ({ loginPage }) => {
 			await loginPage.expectSignInHeadingToBeVisible();
-
-			const username = "uknown_user";
-			const password = "wrong_password";
+			const { username, password } = getCredentials("invalid");
 			await loginPage.login(username, password);
-
 			await loginPage.expectInvalidCredentialWarning();
 		},
 	);
@@ -41,11 +36,8 @@ test.describe("Login", () => {
 		},
 		async ({ loginPage }) => {
 			await loginPage.expectSignInHeadingToBeVisible();
-
-			const username = "";
-			const password = "";
+			const { username, password } = getCredentials("blank");
 			await loginPage.login(username, password);
-
 			await loginPage.expectInvalidCredentialWarning();
 		},
 	);

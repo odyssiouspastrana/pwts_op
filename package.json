@@ -19,7 +19,8 @@
 		"test:custom": "ts-node utils/run-custom-tests.ts",
 		"test:report:playwright": "playwright show-report reports/playwright-report",
 		"test:report:custom": "open-cli reports/index.html",
-		"prepare": "husky && husky install"
+		"prepare": "husky && husky install",
+		"headed": "npx playwright test --headed"
 	},
 	"lint-staged": {
 		"*.{js,jsx,ts,tsx,mjs}": [
