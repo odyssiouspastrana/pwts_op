@@ -4,7 +4,7 @@ import { getCredentials } from "@utils/helper";
 
 type AppFixtures = {
 	loginPage: LoginPage;
-	productsPage: ConfigurationPage;
+	configurationPage: ConfigurationPage;
 };
 
 export const test = base.extend<AppFixtures>({
@@ -16,7 +16,7 @@ export const test = base.extend<AppFixtures>({
 		await use(loginPage);
 	},
 
-	productsPage: async ({ page, loginPage }, use) => {
+	configurationPage: async ({ page, loginPage }, use) => {
 		const { username, password } = getCredentials("valid");
 		await loginPage.login(username, password);
 		await loginPage.expectHomeLogo();

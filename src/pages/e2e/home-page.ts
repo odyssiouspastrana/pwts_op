@@ -9,6 +9,10 @@ export class HomePage extends BasePage {
 		this.signInHeading = page.getByRole("heading", { name: "Sign in to your account" });
 	}
 
+	async expectCorrectTitle() {
+		await this.expectToHaveTitle(/Sign in to iqgeo/);
+	}
+
 	async expectSignInHeadingVisible() {
 		await this.expectElementVisible(this.signInHeading);
 	}
