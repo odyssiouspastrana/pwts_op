@@ -1,7 +1,9 @@
+import { Data as data } from "@utils/data";
+
 export function getCredentials(type = "valid") {
 	switch (type) {
 		case "valid":
-			return { username: "admin", password: "_mywWorld_" };
+			return { username: data.IQGEO_USER, password: data.IQGEO_PASS };
 		case "invalid":
 			return { username: "unknown_user", password: "wrong_password" };
 		case "blank":
