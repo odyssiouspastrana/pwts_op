@@ -12,4 +12,6 @@ test("Navigate Configuration and verify details", async ({ configurationPage }) 
 	await configurationPage.expectUsersDetails();
 	await configurationPage.navigateConfiguration();
 	await configurationPage.navigateFeatures();
+	await configurationPage.expectFeatureDetails();
+	await configurationPage.verifyFeatureTypeBuilding();
 });
