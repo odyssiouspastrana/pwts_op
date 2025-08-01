@@ -5,6 +5,7 @@ export class ConfigurationPage extends BasePage {
 	private readonly configurationApplication: Locator;
 	private readonly applicationLink: Locator;
 	private readonly cell: Locator;
+	private readonly cellTwo: Locator;
 	private readonly rolesLink: Locator;
 	private readonly usersLink: Locator;
 	private readonly featuresLink: Locator;
@@ -33,12 +34,23 @@ export class ConfigurationPage extends BasePage {
 	private readonly featureTypeBuildingSearchesDisplayNameField: Locator;
 	private readonly featureTypeBuildingQueriesTab: Locator;
 	private readonly featureTypeBuildingQueriesDisplayValueField: Locator;
+	private readonly featurePickLists: Locator;
+	private readonly featurePickListsAsbuild: Locator;
+	private readonly featurePickListsAsbuildName: Locator;
+	private readonly featurePickListsAsbuildValueFirst: Locator;
+	private readonly featurePickListsAsbuildValueSecond: Locator;
+	private readonly featurePickListsAsbuildValueThird: Locator;
+	private readonly featurePickListsAsbuildValueFourth: Locator;
+	private readonly featurePickListsAsbuildValueFifth: Locator;
+	private readonly featureLayers: Locator;
+	private readonly featureLayersGroupsTab: Locator;
 
 	constructor(page: Page) {
 		super(page);
 		this.configurationApplication = page.getByRole("link", { name: "Configuration" });
 		this.applicationLink = page.getByRole("link", { name: "Applications" });
 		this.cell = page.locator("xpath=//tbody[@class='ant-table-tbody']");
+		this.cellTwo = page.locator("xpath=(//tbody[@class='ant-table-tbody'])[2]");
 		this.rolesLink = page.getByRole("link", { name: "Roles" });
 		this.usersLink = page.getByRole("link", { name: "Users" });
 		this.featuresLink = page.getByRole("link", { name: "Features" });
@@ -87,6 +99,16 @@ export class ConfigurationPage extends BasePage {
 		this.featureTypeBuildingSearchesDisplayNameField = page.locator("xpath=//input[@value='pop']");
 		this.featureTypeBuildingQueriesTab = page.locator("xpath=//div[normalize-space(text())='Queries']");
 		this.featureTypeBuildingQueriesDisplayValueField = page.locator("xpath=(//input[@value='pop'])[2]");
+		this.featurePickLists = page.getByRole("link", { name: "Pick Lists" });
+		this.featurePickListsAsbuild = page.locator("xpath=//b[normalize-space(text())='asbuilt_status']");
+		this.featurePickListsAsbuildName = page.locator("xpath=//input[@value='asbuilt_status']");
+		this.featurePickListsAsbuildValueFirst = page.locator("xpath=//input[@value='planned']");
+		this.featurePickListsAsbuildValueSecond = page.locator("xpath=//input[@value='built']");
+		this.featurePickListsAsbuildValueThird = page.locator("xpath=//input[@value='to_be_removed']");
+		this.featurePickListsAsbuildValueFourth = page.locator("xpath=//input[@value='not_contracted']");
+		this.featurePickListsAsbuildValueFifth = page.locator("xpath=//input[@value='documented']");
+		this.featureLayers = page.getByRole("link", { name: "Layers" });
+		this.featureLayersGroupsTab = page.locator("xpath=//div[normalize-space(text())='Groups']");
 	}
 
 	async navigateConfiguration() {
@@ -276,5 +298,164 @@ export class ConfigurationPage extends BasePage {
 		await this.expectToContainText(this.featureTypeBuildingQueriesTab, "Queries");
 		await this.featureTypeBuildingQueriesTab.click();
 		await this.expectElementVisible(this.featureTypeBuildingQueriesDisplayValueField);
+	}
+
+	async navigatePickLists() {
+		await this.expectToHaveText(this.featurePickLists, "Pick Lists");
+		await this.featurePickLists.click();
+	}
+
+	async expectPickListsDetails() {
+		await this.expectToContainText(this.cell, "asbuilt_status");
+		await this.expectToContainText(this.cell, "blown_fiber_bundle_built_type");
+		await this.expectToContainText(this.cell, "blown_fiber_bundle_color_code");
+		await this.expectToContainText(this.cell, "blown_fiber_bundle_tube_cross_section");
+		await this.expectToContainText(this.cell, "blown_fiber_tube_cross_section");
+		await this.expectToContainText(this.cell, "blown_fiber_tube_endpoint_network_function");
+		await this.expectToContainText(this.cell, "blown_fiber_tube_junction_in_out_tube_dia");
+		await this.expectToContainText(this.cell, "blown_fiber_tube_junction_network_function");
+		await this.expectToContainText(this.cell, "building_network_function");
+		await this.expectToContainText(this.cell, "cabinet_network_function");
+		await this.expectToContainText(this.cell, "design_network_concept");
+		await this.expectToContainText(this.cell, "design_state");
+		await this.expectToContainText(this.cell, "fiber_cable_straintypes");
+		await this.expectToContainText(this.cell, "fiber_splice_tray_side");
+		await this.expectToContainText(this.cell, "install_company");
+		await this.expectToContainText(this.cell, "junction_box_network_function");
+		await this.expectToContainText(this.cell, "lease_status");
+		await this.expectToContainText(this.cell, "loc_status");
+		await this.expectToContainText(this.cell, "manhole_network_function");
+		await this.expectToContainText(this.cell, "manhole_size");
+		await this.expectToContainText(this.cell, "mantle_colors");
+		await this.expectToContainText(this.cell, "manufacturer");
+		await this.expectToContainText(this.cell, "mdu_network_function");
+		await this.expectToContainText(this.cell, "network_area_colors");
+		await this.expectToContainText(this.cell, "network_topology");
+		await this.expectToContainText(this.cell, "odf_cassette_connector_type");
+		await this.expectToContainText(this.cell, "oh_route_label_size");
+		await this.expectToContainText(this.cell, "oh_route_type");
+		await this.expectToContainText(this.cell, "radio_antenna_network_function");
+		await this.expectToContainText(this.cell, "rifu_cassette_connector_type");
+		await this.expectToContainText(this.cell, "surface");
+		await this.expectToContainText(this.cell, "survey_evaluation");
+		await this.expectToContainText(this.cell, "tube_colors");
+		await this.expectToContainText(this.cell, "ug_route_classification");
+		await this.expectToContainText(this.cell, "ug_route_crossing_type");
+		await this.expectToContainText(this.cell, "ug_route_label_size");
+		await this.expectToContainText(this.cell, "ug_route_location");
+		await this.expectToContainText(this.cell, "ug_route_surface");
+		await this.expectToContainText(this.cell, "ug_route_type");
+		await this.expectToContainText(this.cell, "wall_box_spec_hup_type");
+	}
+
+	async navigatePickListsAsbuild() {
+		await this.expectToContainText(this.featurePickListsAsbuild, "asbuilt_status");
+		await this.featurePickListsAsbuild.click();
+		await this.expectElementVisible(this.featurePickListsAsbuildName);
+		await this.expectElementVisible(this.featurePickListsAsbuildValueFirst);
+		await this.expectElementVisible(this.featurePickListsAsbuildValueSecond);
+		await this.expectElementVisible(this.featurePickListsAsbuildValueThird);
+		await this.expectElementVisible(this.featurePickListsAsbuildValueFourth);
+		await this.expectElementVisible(this.featurePickListsAsbuildValueFifth);
+	}
+
+	async navigateLayers() {
+		await this.expectToContainText(this.featureLayers, "Layers");
+		await this.featureLayers.click();
+	}
+
+	async expectLayersDetails() {
+		await this.expectToContainText(this.cell, "Bing");
+		await this.expectToContainText(this.cell, "Bing");
+		await this.expectToContainText(this.cell, "Bing Aerial");
+		await this.expectToContainText(this.cell, "blown_fiber_bundles");
+		await this.expectToContainText(this.cell, "blown_fiber_bundle_labels");
+		await this.expectToContainText(this.cell, "blown_fiber_tubes");
+		await this.expectToContainText(this.cell, "blown_fiber_tube_labels");
+		await this.expectToContainText(this.cell, "cables_access");
+		await this.expectToContainText(this.cell, "cables_backbone");
+		await this.expectToContainText(this.cell, "cables_drop");
+		await this.expectToContainText(this.cell, "cables_no_topology");
+		await this.expectToContainText(this.cell, "cables_transport");
+		await this.expectToContainText(this.cell, "conduits");
+		await this.expectToContainText(this.cell, "conduit_labels");
+		await this.expectToContainText(this.cell, "delta_structures");
+		await this.expectToContainText(this.cell, "designs");
+		await this.expectToContainText(this.cell, "dp_areas");
+		await this.expectToContainText(this.cell, "esri_backbone_carrier_fremdnetz");
+		await this.expectToContainText(this.cell, "esri_bodenklassen_bodenklassen");
+		await this.expectToContainText(this.cell, "esri_gebauede_gebaude");
+		await this.expectToContainText(this.cell, "esri_hosted_addresspoint_new");
+		await this.expectToContainText(this.cell, "esri_hosted_moma_surface_layer");
+		await this.expectToContainText(this.cell, "esri_katasterdaten_bedauungsplan_nbg_flurstuecke");
+		await this.expectToContainText(this.cell, "esri_katasterdaten_kataster");
+		await this.expectToContainText(this.cell, "esri_project_polygon_latest");
+		await this.expectToContainText(this.cell, "Extract Regions");
+		await this.expectToContainText(this.cell, "Extracts");
+		await this.expectToContainText(this.cell, "fcp_areas");
+		await this.expectToContainText(this.cell, "fttx_areas");
+		await this.expectToContainText(this.cell, "Google");
+		await this.expectToContainText(this.cell, "Google Hybrid");
+		await this.expectToContainText(this.cell, "Google Sat");
+		await this.expectToContainText(this.cell, "Google Traffic");
+		await this.expectToContainText(this.cell, "iqgapp_markup_layer");
+		await this.expectToContainText(this.cell, "mywcom_cables");
+		await this.expectToContainText(this.cell, "mywcom_cable_labels");
+		await this.expectToContainText(this.cell, "mywcom_cable_segments");
+		await this.expectToContainText(this.cell, "mywcom_circuits");
+		await this.expectToContainText(this.cell, "mywcom_coax_cables");
+		await this.expectToContainText(this.cell, "mywcom_coax_cables_offset");
+		await this.expectToContainText(this.cell, "mywcom_coax_equipment");
+		await this.expectToContainText(this.cell, "mywcom_coax_equipment_offset");
+		await this.expectToContainText(this.cell, "mywcom_conduits");
+		await this.expectToContainText(this.cell, "mywcom_conduit_runs");
+		await this.expectToContainText(this.cell, "mywcom_copper_cables");
+		await this.expectToContainText(this.cell, "mywcom_copper_cables_offset");
+		await this.expectToContainText(this.cell, "mywcom_copper_equipment");
+		await this.expectToContainText(this.cell, "mywcom_copper_equipment_offset");
+		await this.expectToContainText(this.cell, "mywcom_data_block");
+		await this.expectToContainText(this.cell, "mywcom_equipment");
+		await this.expectToContainText(this.cell, "mywcom_fiber_cables_offset");
+		await this.expectToContainText(this.cell, "mywcom_fiber_equipment_offset");
+		await this.expectToContainText(this.cell, "mywcom_line_of_count");
+		await this.expectToContainText(this.cell, "mywcom_mixed_equipment");
+		await this.expectToContainText(this.cell, "mywcom_structures");
+		await this.expectToContainText(this.cell, "None");
+		await this.expectToContainText(this.cell, "Notes");
+		await this.expectToContainText(this.cell, "OSM");
+		await this.expectToContainText(this.cell, "structures_buildings");
+		await this.expectToContainText(this.cell, "structures_cabinets");
+		await this.expectToContainText(this.cell, "structures_junction_boxes");
+		await this.expectToContainText(this.cell, "structures_manholes");
+		await this.expectToContainText(this.cell, "structures_mdus");
+		await this.expectToContainText(this.cell, "structures_oh_routes");
+		await this.expectToContainText(this.cell, "structures_oh_route_labels");
+		await this.expectToContainText(this.cell, "structures_radio_antennas");
+		await this.expectToContainText(this.cell, "structures_route_junctions");
+		await this.expectToContainText(this.cell, "structures_ug_routes");
+		await this.expectToContainText(this.cell, "structures_ug_route_endpoints");
+		await this.expectToContainText(this.cell, "structures_ug_route_labels");
+		await this.expectToContainText(this.cell, "ug_route_protocols");
+		await this.expectToContainText(this.cell, "versioned_designs");
+	}
+
+	async navigateLayersGroupsTab() {
+		await this.expectToContainText(this.featureLayersGroupsTab, "Groups");
+		await this.featureLayersGroupsTab.click();
+	}
+
+	async expectLayersGroupDetails() {
+		await this.expectToContainText(this.cellTwo, "conduits");
+		await this.expectToContainText(this.cellTwo, "deltas");
+		await this.expectToContainText(this.cellTwo, "esri");
+		await this.expectToContainText(this.cellTwo, "labels");
+		await this.expectToContainText(this.cellTwo, "mywcom_coax_group");
+		await this.expectToContainText(this.cellTwo, "mywcom_coax_offset_group");
+		await this.expectToContainText(this.cellTwo, "mywcom_copper_group");
+		await this.expectToContainText(this.cellTwo, "mywcom_copper_offset_group");
+		await this.expectToContainText(this.cellTwo, "mywcom_fiber_group");
+		await this.expectToContainText(this.cellTwo, "mywcom_fiber_offset_group");
+		await this.expectToContainText(this.cellTwo, "network_areas");
+		await this.expectToContainText(this.cellTwo, "structures");
 	}
 }
