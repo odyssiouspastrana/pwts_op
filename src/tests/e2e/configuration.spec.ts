@@ -14,4 +14,14 @@ test("Navigate Configuration and verify details", async ({ configurationPage }) 
 	await configurationPage.navigateFeatures();
 	await configurationPage.expectFeatureDetails();
 	await configurationPage.verifyFeatureTypeBuilding();
+	await configurationPage.navigateConfiguration();
+	await configurationPage.navigatePickLists();
+	await configurationPage.expectPickListsDetails();
+	await configurationPage.navigatePickListsAsbuild();
+	await configurationPage.navigateConfiguration();
+	await configurationPage.navigateLayers();
+	await configurationPage.expectLayersDetails();
+	await configurationPage.navigateLayersGroupsTab();
+	await configurationPage.expectLayersGroupDetails();
+	await configurationPage.navigateConfiguration();
 });
