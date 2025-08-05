@@ -34,16 +34,34 @@ export class ConfigurationPage extends BasePage {
 	private readonly featureTypeBuildingSearchesDisplayNameField: Locator;
 	private readonly featureTypeBuildingQueriesTab: Locator;
 	private readonly featureTypeBuildingQueriesDisplayValueField: Locator;
-	private readonly featurePickLists: Locator;
-	private readonly featurePickListsAsbuild: Locator;
-	private readonly featurePickListsAsbuildName: Locator;
-	private readonly featurePickListsAsbuildValueFirst: Locator;
-	private readonly featurePickListsAsbuildValueSecond: Locator;
-	private readonly featurePickListsAsbuildValueThird: Locator;
-	private readonly featurePickListsAsbuildValueFourth: Locator;
-	private readonly featurePickListsAsbuildValueFifth: Locator;
-	private readonly featureLayers: Locator;
-	private readonly featureLayersGroupsTab: Locator;
+	private readonly pickLists: Locator;
+	private readonly pickListsAsbuild: Locator;
+	private readonly pickListsAsbuildName: Locator;
+	private readonly pickListsAsbuildValueFirst: Locator;
+	private readonly pickListsAsbuildValueSecond: Locator;
+	private readonly pickListsAsbuildValueThird: Locator;
+	private readonly pickListsAsbuildValueFourth: Locator;
+	private readonly pickListsAsbuildValueFifth: Locator;
+	private readonly layers: Locator;
+	private readonly layersGroupsTab: Locator;
+	private readonly networks: Locator;
+	private readonly datasources: Locator;
+	private readonly settings: Locator;
+	private readonly settingsCommsRoutesTab: Locator;
+	private readonly settingsCommsEquipmentTab: Locator;
+	private readonly settingsCommsConduitsTab: Locator;
+	private readonly settingsCommsCablesTab: Locator;
+	private readonly settingsCommsCircuitsTab: Locator;
+	private readonly settingsCommsDesignsTab: Locator;
+	private readonly settingsCommsSpecsTab: Locator;
+	private readonly settingsCommsLaborCostsTab: Locator;
+	private readonly settingsCommsFiberColorSchemesTab: Locator;
+	private readonly settingsCommsFiberColorsTab: Locator;
+	private readonly settingsCommsStylesTab: Locator;
+	private readonly settingsCommsImportFormats: Locator;
+	private readonly settingsStreetviewTab: Locator;
+	private readonly settingsSystemTab: Locator;
+	private readonly settingsAdvancedTab: Locator;
 
 	constructor(page: Page) {
 		super(page);
@@ -99,16 +117,36 @@ export class ConfigurationPage extends BasePage {
 		this.featureTypeBuildingSearchesDisplayNameField = page.locator("xpath=//input[@value='pop']");
 		this.featureTypeBuildingQueriesTab = page.locator("xpath=//div[normalize-space(text())='Queries']");
 		this.featureTypeBuildingQueriesDisplayValueField = page.locator("xpath=(//input[@value='pop'])[2]");
-		this.featurePickLists = page.getByRole("link", { name: "Pick Lists" });
-		this.featurePickListsAsbuild = page.locator("xpath=//b[normalize-space(text())='asbuilt_status']");
-		this.featurePickListsAsbuildName = page.locator("xpath=//input[@value='asbuilt_status']");
-		this.featurePickListsAsbuildValueFirst = page.locator("xpath=//input[@value='planned']");
-		this.featurePickListsAsbuildValueSecond = page.locator("xpath=//input[@value='built']");
-		this.featurePickListsAsbuildValueThird = page.locator("xpath=//input[@value='to_be_removed']");
-		this.featurePickListsAsbuildValueFourth = page.locator("xpath=//input[@value='not_contracted']");
-		this.featurePickListsAsbuildValueFifth = page.locator("xpath=//input[@value='documented']");
-		this.featureLayers = page.getByRole("link", { name: "Layers" });
-		this.featureLayersGroupsTab = page.locator("xpath=//div[normalize-space(text())='Groups']");
+		this.pickLists = page.getByRole("link", { name: "Pick Lists" });
+		this.pickListsAsbuild = page.locator("xpath=//b[normalize-space(text())='asbuilt_status']");
+		this.pickListsAsbuildName = page.locator("xpath=//input[@value='asbuilt_status']");
+		this.pickListsAsbuildValueFirst = page.locator("xpath=//input[@value='planned']");
+		this.pickListsAsbuildValueSecond = page.locator("xpath=//input[@value='built']");
+		this.pickListsAsbuildValueThird = page.locator("xpath=//input[@value='to_be_removed']");
+		this.pickListsAsbuildValueFourth = page.locator("xpath=//input[@value='not_contracted']");
+		this.pickListsAsbuildValueFifth = page.locator("xpath=//input[@value='documented']");
+		this.layers = page.getByRole("link", { name: "Layers" });
+		this.layersGroupsTab = page.locator("xpath=//div[normalize-space(text())='Groups']");
+		this.networks = page.getByRole("link", { name: "Networks" });
+		this.datasources = page.getByRole("link", { name: "Datasources" });
+		this.settings = page.getByRole("link", { name: "Settings" });
+		this.settingsCommsRoutesTab = page.locator("xpath=//span[normalize-space(text())='Routes']");
+		this.settingsCommsEquipmentTab = page.locator("xpath=//span[normalize-space(text())='Equipment']");
+		this.settingsCommsConduitsTab = page.locator("xpath=//span[normalize-space(text())='Conduits']");
+		this.settingsCommsCablesTab = page.locator("xpath=//span[normalize-space(text())='Cables']");
+		this.settingsCommsCircuitsTab = page.locator("xpath=//span[normalize-space(text())='Circuits']");
+		this.settingsCommsDesignsTab = page.locator("xpath=//span[normalize-space(text())='Designs']");
+		this.settingsCommsSpecsTab = page.locator("xpath=//span[normalize-space(text())='Specs']");
+		this.settingsCommsLaborCostsTab = page.locator("xpath=//span[normalize-space(text())='Labor Costs']");
+		this.settingsCommsFiberColorSchemesTab = page.locator(
+			"xpath=//span[normalize-space(text())='Fiber Color Schemes']",
+		);
+		this.settingsCommsFiberColorsTab = page.locator("xpath=//span[normalize-space(text())='Fiber Colors']");
+		this.settingsCommsStylesTab = page.locator("xpath=//span[normalize-space(text())='Styles']");
+		this.settingsCommsImportFormats = page.locator("xpath=//span[normalize-space(text())='Import Formats']");
+		this.settingsStreetviewTab = page.locator("xpath=(//div[@class='ant-tabs-tab-btn'])[2]");
+		this.settingsSystemTab = page.locator("xpath=(//div[@class='ant-tabs-tab-btn'])[3]");
+		this.settingsAdvancedTab = page.locator("xpath=(//div[@class='ant-tabs-tab-btn'])[4]");
 	}
 
 	async navigateConfiguration() {
@@ -301,8 +339,8 @@ export class ConfigurationPage extends BasePage {
 	}
 
 	async navigatePickLists() {
-		await this.expectToHaveText(this.featurePickLists, "Pick Lists");
-		await this.featurePickLists.click();
+		await this.expectToHaveText(this.pickLists, "Pick Lists");
+		await this.pickLists.click();
 	}
 
 	async expectPickListsDetails() {
@@ -349,19 +387,19 @@ export class ConfigurationPage extends BasePage {
 	}
 
 	async navigatePickListsAsbuild() {
-		await this.expectToContainText(this.featurePickListsAsbuild, "asbuilt_status");
-		await this.featurePickListsAsbuild.click();
-		await this.expectElementVisible(this.featurePickListsAsbuildName);
-		await this.expectElementVisible(this.featurePickListsAsbuildValueFirst);
-		await this.expectElementVisible(this.featurePickListsAsbuildValueSecond);
-		await this.expectElementVisible(this.featurePickListsAsbuildValueThird);
-		await this.expectElementVisible(this.featurePickListsAsbuildValueFourth);
-		await this.expectElementVisible(this.featurePickListsAsbuildValueFifth);
+		await this.expectToContainText(this.pickListsAsbuild, "asbuilt_status");
+		await this.pickListsAsbuild.click();
+		await this.expectElementVisible(this.pickListsAsbuildName);
+		await this.expectElementVisible(this.pickListsAsbuildValueFirst);
+		await this.expectElementVisible(this.pickListsAsbuildValueSecond);
+		await this.expectElementVisible(this.pickListsAsbuildValueThird);
+		await this.expectElementVisible(this.pickListsAsbuildValueFourth);
+		await this.expectElementVisible(this.pickListsAsbuildValueFifth);
 	}
 
 	async navigateLayers() {
-		await this.expectToContainText(this.featureLayers, "Layers");
-		await this.featureLayers.click();
+		await this.expectToContainText(this.layers, "Layers");
+		await this.layers.click();
 	}
 
 	async expectLayersDetails() {
@@ -440,8 +478,8 @@ export class ConfigurationPage extends BasePage {
 	}
 
 	async navigateLayersGroupsTab() {
-		await this.expectToContainText(this.featureLayersGroupsTab, "Groups");
-		await this.featureLayersGroupsTab.click();
+		await this.expectToContainText(this.layersGroupsTab, "Groups");
+		await this.layersGroupsTab.click();
 	}
 
 	async expectLayersGroupDetails() {
@@ -457,5 +495,155 @@ export class ConfigurationPage extends BasePage {
 		await this.expectToContainText(this.cellTwo, "mywcom_fiber_offset_group");
 		await this.expectToContainText(this.cellTwo, "network_areas");
 		await this.expectToContainText(this.cellTwo, "structures");
+	}
+
+	async navigateNetworks() {
+		await this.expectToContainText(this.networks, "Networks");
+		await this.networks.click();
+	}
+
+	async expectNetworksDetails() {
+		await this.expectToContainText(this.cell, "mywcom_cable_segments");
+		await this.expectToContainText(this.cell, "mywcom_coax");
+		await this.expectToContainText(this.cell, "mywcom_copper");
+		await this.expectToContainText(this.cell, "mywcom_fiber");
+		await this.expectToContainText(this.cell, "mywcom_fiber_path");
+		await this.expectToContainText(this.cell, "mywcom_routes");
+	}
+
+	async navigateDatasources() {
+		await this.expectToContainText(this.datasources, "Datasources");
+		await this.datasources.click();
+	}
+
+	async expectDatasourcesDetails() {
+		await this.expectToContainText(this.cell, "bing");
+		await this.expectToContainText(this.cell, "built_in");
+		await this.expectToContainText(this.cell, "google");
+		await this.expectToContainText(this.cell, "mapbox");
+		await this.expectToContainText(this.cell, "myworld");
+	}
+
+	async navigateSettings() {
+		await this.expectToContainText(this.settings, "Settings");
+		await this.settings.click();
+	}
+
+	async expectSettingsCommsStructuresDetails() {
+		await this.expectToContainText(this.cell, "building");
+		await this.expectToContainText(this.cell, "mdu");
+		await this.expectToContainText(this.cell, "manhole");
+		await this.expectToContainText(this.cell, "mywcom_route_junction");
+		await this.expectToContainText(this.cell, "cabinet");
+		await this.expectToContainText(this.cell, "junction_box");
+		await this.expectToContainText(this.cell, "radio_antenna");
+		await this.expectToContainText(this.cell, "ug_route_endpoint");
+	}
+
+	async navigateSettingsCommsRoutesTab() {
+		await this.expectToContainText(this.settingsCommsRoutesTab, "Routes");
+		await this.settingsCommsRoutesTab.click();
+	}
+
+	async expectSettingsCommsRoutesDetails() {
+		await this.expectToContainText(this.cell, "ug_route");
+		await this.expectToContainText(this.cell, "oh_route");
+	}
+
+	async navigateSettingsCommsEquipmentTab() {
+		await this.expectToContainText(this.settingsCommsEquipmentTab, "Equipment");
+		await this.settingsCommsEquipmentTab.click();
+	}
+
+	async expectSettingsCommsEquipmentDetails() {
+		await this.expectToContainText(this.cell, "mywcom_fiber_slack");
+		await this.expectToContainText(this.cell, "fiber_splitter");
+		await this.expectToContainText(this.cell, "fiber_splice_tray");
+		await this.expectToContainText(this.cell, "wall_box");
+		await this.expectToContainText(this.cell, "rack");
+		await this.expectToContainText(this.cell, "flat");
+		await this.expectToContainText(this.cell, "fwdm");
+		await this.expectToContainText(this.cell, "fwdm_card");
+		await this.expectToContainText(this.cell, "gf_ta");
+		await this.expectToContainText(this.cell, "rack_building");
+		await this.expectToContainText(this.cell, "splice_closure");
+		await this.expectToContainText(this.cell, "subframe");
+		await this.expectToContainText(this.cell, "odf_frame");
+		await this.expectToContainText(this.cell, "odf_cassette");
+		await this.expectToContainText(this.cell, "rifu_frame");
+		await this.expectToContainText(this.cell, "rifu_cassette");
+		await this.expectToContainText(this.cell, "room");
+		await this.expectToContainText(this.cell, "blown_fiber_tube_junction");
+		await this.expectToContainText(this.cell, "blown_fiber_tube_endpoint");
+	}
+
+	async navigateSettingsCommsConduitsTab() {
+		await this.expectToContainText(this.settingsCommsConduitsTab, "Conduits");
+		await this.settingsCommsEquipmentTab.click();
+	}
+
+	async navigateSettingsCommsCablesTab() {
+		await this.expectToContainText(this.settingsCommsCablesTab, "Cables");
+		await this.settingsCommsCablesTab.click();
+	}
+
+	async expectSettingsCommsCablesDetails() {
+		await this.expectToContainText(this.cell, "fiber_cable");
+	}
+
+	async navigateSettingsCommsCircuitsTab() {
+		await this.expectToContainText(this.settingsCommsCircuitsTab, "Circuits");
+		await this.settingsCommsCircuitsTab.click();
+	}
+
+	async expectSettingsCommsCircuitsDetails() {
+		await this.expectToContainText(this.cell, "ftth_circuit");
+	}
+
+	async navigateSettingsCommsDesignsTab() {
+		await this.expectToContainText(this.settingsCommsDesignsTab, "Designs");
+		await this.settingsCommsCircuitsTab.click();
+	}
+
+	async navigateSettingsCommsSpecsTab() {
+		await this.expectToContainText(this.settingsCommsSpecsTab, "Specs");
+		await this.settingsCommsCircuitsTab.click();
+	}
+
+	async navigateSettingsCommsLaborCostsTab() {
+		await this.expectToContainText(this.settingsCommsLaborCostsTab, "Labor Costs");
+		await this.settingsCommsLaborCostsTab.click();
+	}
+
+	async navigateSettingsCommsFiberColorSchemesTab() {
+		await this.expectToContainText(this.settingsCommsFiberColorSchemesTab, "Fiber Color Schemes");
+		await this.settingsCommsFiberColorSchemesTab.click();
+	}
+
+	async navigateSettingsCommsFiberColorsTab() {
+		await this.expectToContainText(this.settingsCommsFiberColorsTab, "Fiber Colors");
+		await this.settingsCommsFiberColorsTab.click();
+	}
+
+	async navigateSettingsCommsStylesTab() {
+		await this.expectToContainText(this.settingsCommsStylesTab, "Styles");
+		await this.settingsCommsCircuitsTab.click();
+	}
+
+	async navigateSettingsCommsImportFormatsTab() {
+		await this.expectToContainText(this.settingsCommsImportFormats, "Import Formats");
+		await this.settingsCommsSpecsTab.click();
+	}
+
+	async navigateSettingsStreetviewTab() {
+		await this.settingsStreetviewTab.click();
+	}
+
+	async navigateSettingsSystemTab() {
+		await this.settingsSystemTab.click();
+	}
+
+	async navigateSettingsAdvancedTab() {
+		await this.settingsAdvancedTab.click();
 	}
 }
