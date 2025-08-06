@@ -579,7 +579,7 @@ export class ConfigurationPage extends BasePage {
 
 	async navigateSettingsCommsConduitsTab() {
 		await this.expectToContainText(this.settingsCommsConduitsTab, "Conduits");
-		await this.settingsCommsEquipmentTab.click();
+		await this.settingsCommsConduitsTab.click();
 	}
 
 	async navigateSettingsCommsCablesTab() {
@@ -602,12 +602,12 @@ export class ConfigurationPage extends BasePage {
 
 	async navigateSettingsCommsDesignsTab() {
 		await this.expectToContainText(this.settingsCommsDesignsTab, "Designs");
-		await this.settingsCommsCircuitsTab.click();
+		await this.settingsCommsDesignsTab.click();
 	}
 
 	async navigateSettingsCommsSpecsTab() {
 		await this.expectToContainText(this.settingsCommsSpecsTab, "Specs");
-		await this.settingsCommsCircuitsTab.click();
+		await this.settingsCommsSpecsTab.click();
 	}
 
 	async navigateSettingsCommsLaborCostsTab() {
@@ -627,12 +627,12 @@ export class ConfigurationPage extends BasePage {
 
 	async navigateSettingsCommsStylesTab() {
 		await this.expectToContainText(this.settingsCommsStylesTab, "Styles");
-		await this.settingsCommsCircuitsTab.click();
+		await this.settingsCommsStylesTab.click();
 	}
 
 	async navigateSettingsCommsImportFormatsTab() {
 		await this.expectToContainText(this.settingsCommsImportFormats, "Import Formats");
-		await this.settingsCommsSpecsTab.click();
+		await this.settingsCommsImportFormats.click();
 	}
 
 	async navigateSettingsStreetviewTab() {
