@@ -13,6 +13,7 @@ test.describe("Login", () => {
 			const { username, password } = getCredentials("valid");
 			await loginPage.login(username, password);
 			await loginPage.expectHomeLogo();
+			await loginPage.logout();
 		},
 	);
 

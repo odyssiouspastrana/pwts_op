@@ -8,6 +8,7 @@ export class LoginPage extends BasePage {
 	private readonly signInButton: Locator;
 	private readonly homeLogo: Locator;
 	private readonly invalidCredentialWarningMessage: Locator;
+	private readonly logoutLink: Locator;
 
 	constructor(page: Page) {
 		super(page);
@@ -20,6 +21,7 @@ export class LoginPage extends BasePage {
 		this.invalidCredentialWarningMessage = page.locator(
 			"xpath=//span[normalize-space(text())='Invalid username or password.']",
 		);
+		this.logoutLink = page.getByRole("link", { name: "Logout" });
 	}
 
 	async expectSignInHeadingToBeVisible() {
@@ -38,5 +40,9 @@ export class LoginPage extends BasePage {
 
 	async expectInvalidCredentialWarning() {
 		await this.expectElementVisible(this.invalidCredentialWarningMessage);
+	}
+
+	async logout() {
+		await this.logoutLink.click();
 	}
 }
